@@ -14,9 +14,10 @@ public class BuildVersionHandler {
 	public boolean compareVersions(String url, String fileName) throws IOException {
 		BuildVersionReader reader = new BuildVersionReader();
 		currentBuild = reader.readFromWebPage(url);
+		System.out.println("1 ****** " + currentBuild + " *********");
 //		currentBuild = "Build v2.0.5";
 		lastParsedBuildVersion = reader.readSavedBuildVerisonFromFile(fileName).trim();
-
+		System.out.println("2 ****** " + lastParsedBuildVersion + " *********");
 		if (!lastParsedBuildVersion.equalsIgnoreCase(currentBuild)){
 			isVersionChanged = true;
 			updateBuildVersionInFile(currentBuild, fileName);
